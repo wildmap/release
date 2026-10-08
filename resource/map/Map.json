@@ -1,0 +1,11 @@
+{
+  "id": 1001,
+  "mapwidth": 7200000,
+  "mapheight": 7200000,
+  "gridxlength": 15000,
+  "gridzlength": 15000,
+  "tilewidth": 180000,
+  "tileheight": 180000,
+  "viewxlength": 15000,
+  "viewzlength": 30000
+}

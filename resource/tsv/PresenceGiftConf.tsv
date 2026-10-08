@@ -1,0 +1,8 @@
+step	wait_seconds	reward
+Step	WaitSeconds	Reward
+档位	等待秒	奖励
+1	120	[{"kind":"vm","id":11151001,"val":100}]
+2	180	[{"kind":"vm","id":11151006,"val":100}]
+3	300	[{"kind":"vm","id":11151007,"val":150}]
+4	480	[{"kind":"vm","id":11151008,"val":100}]
+5	600	[{"kind":"vm","id":11151001,"val":500},{"kind":"vm","id":11151006,"val":200}]

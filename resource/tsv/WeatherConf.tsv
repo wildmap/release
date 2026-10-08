@@ -1,0 +1,13 @@
+id	key	name	description	march_speed_bp	gather_speed_bp
+ID	Key	Name	Description	MarchSpeedBP	GatherSpeedBP
+天气ID(全表唯一)	天气标识(英文,程序引用,须含clear)	名称	描述	行军速度修正(万分比)	采集速度修正(万分比)
+1	clear	晴	晴空万里，无特殊影响。	0	0
+2	rain	雨	道路泥泞，拖慢行军与采集。	-300	-200
+3	snowy	雪	风雪交加，行动迟缓。	-400	-300
+4	sandstorm	沙暴	遮天蔽日，寸步难行。	-700	-400
+5	fog	雾	视野受阻，略微拖慢行动。	-150	-100
+6	heatwave	酷热	高温难耐，体力消耗加快。	-250	-150
+7	gale	大风	狂风呼啸，行军吃力，箭矢难以命中。	-200	-100
+8	thunderstorm	雷暴	电闪雷鸣，暴雨如注，行军与采集大受阻碍。	-500	-300
+9	hail	冰雹	冰雹砸落，护甲受损，行动迟缓。	-350	-250
+10	overcast	阴天	阴云密布，天色昏暗，行军略受影响。	-50	0

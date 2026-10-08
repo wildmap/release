@@ -1,0 +1,6 @@
+key	need_unlock	need_castle	cond	cond_hint	need_open_days
+Key	NeedUnlock	NeedCastle	Cond	CondHint	NeedOpenDays
+解锁项唯一键	前置解锁项(空=无)	主城等级门槛(0=不限)	自定义条件表达式(bool,空=不用)	条件不满足时的提示(cond 非空时必填)	开服天数门槛(0=不限)
+gather_lv3		3			0
+gather_lv4	gather_lv3	5			2
+gather_lv5	gather_lv4	8			4

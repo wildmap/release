@@ -1,0 +1,4 @@
+id	max_own	max_natural_recover	restore_ms
+ID	MaxOwn	MaxNaturalRecover	RestoreMs
+资源ID	持有上限(含活动奖励)	自然恢复封顶	自然恢复一点所需毫秒
+11171001	1200	100	300000

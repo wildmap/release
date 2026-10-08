@@ -1,0 +1,9 @@
+key	expr	desc
+Key	Expr	Desc
+公式键	表达式(必填,结果为数值)	说明与可用变量
+march_cost	ceil(base * km * count / pool)	行军资源消耗:每公里满编单价按路程与当前兵力折算。变量:base=每公里满编单价,km=路程(公里,出发点到目标的直线距离),count=当前兵力,pool=扩编科技满编兵力
+march_stamina	ceil(base * km)	行军体力消耗:每公里体力单价按路程折算,与带兵数无关。变量:base=每公里体力单价,km=路程(公里,出发点到目标的直线距离)
+refresh_count	round(count * space / density)	区域刷新上限数量。变量:count=档位基数,space=可用空间mm²,density=刷新密度(每多少mm²刷一组)
+gather_count_add	min(count / 1000.0 * 0.1, 1.0)	采集速度的人数加成(比例,0.1=+10%)。变量:count=部队总人数。当前:每1000人+10%,上限+100%
+troop_load	(soldierLoad + loadBase) * (1 + loadAdd / 10000.0)	部队负重上限。变量:soldierLoad=Σ(人数*单兵负重),count=总人数,castleLevel=主城等级,loadBase=基础负重,loadAdd=负重加成(万分比)
+power	round(soldierPower + castleLevel * 2000 + techLevel * 500)	玩家战力:把兵力、主城与科技折成一个可比较的标量。变量:soldierPower=Σ(各兵种满编人数*(单兵攻+单兵防)),soldierCount=满编总人数,castleLevel=主城等级,techLevel=全部科技等级之和

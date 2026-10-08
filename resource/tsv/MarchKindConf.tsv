@@ -1,0 +1,16 @@
+id	key	camp	cost	stamina	detour	recall	move
+ID	Key	Camp	Cost	Stamina	Detour	Recall	Move
+配置表ID	行军类型唯一键(startKind_action_endKind)	是否允许驻扎(0否1是)	每公里资源单价(满编;玩家发起的非回城行军读取;0=取默认500;回城恒免费)	每公里体力单价(玩家发起的非回城行军读取;0=取默认10;回城恒免费)	是否绕路(0否1是)	是否允许召回(0否1是)	是否允许中途改目标(0否1是)
+1	MapUnitPlayerTroop_MarchActionAttack_MapUnitNpcTroop	1	500	10	1	1	1
+2	MapUnitPlayerTroop_MarchActionAttack_MapUnitPlayerTroop	1	500	10	1	1	1
+3	MapUnitPlayerTroop_MarchActionAttack_MapUnitPlayerCastle	1	500	10	1	1	1
+4	MapUnitPlayerTroop_MarchActionGather_MapUnitGatherable	0	500	10	1	1	1
+6	MapUnitPlayerTroop_MarchActionReturn_MapUnitPlayerCastle	0	0	0	1	1	0
+7	MapUnitScoutTroop_MarchActionScout_MapUnitPlayerCastle	0	100	10	1	0	0
+8	MapUnitScoutTroop_MarchActionScout_MapUnitPlayerTroop	0	100	10	1	0	0
+9	MapUnitScoutTroop_MarchActionScout_MapUnitNpcTroop	0	100	10	1	0	0
+11	MapUnitScoutTroop_MarchActionScout_MapUnitGatherable	0	100	10	1	0	0
+13	MapUnitScoutTroop_MarchActionReturn_MapUnitPlayerCastle	0	0	0	1	0	0
+14	MapUnitNpcTroop_MarchActionAttack_MapUnitPlayerTroop	0	0	0	1	0	0
+15	MapUnitNpcTroop_MarchActionAttack_MapUnitPlayerCastle	0	0	0	1	0	0
+16	MapUnitNpcTroop_MarchActionAttack_MapUnitNpcTroop	0	0	0	1	0	0

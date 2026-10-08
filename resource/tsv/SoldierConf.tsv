@@ -1,0 +1,7 @@
+kind	count	atk	def	load	train_cost	train_sec	heal_cost	heal_sec	heal_heavy_cost	heal_heavy_sec
+Kind	Count	ATK	DEF	Load	TrainCost	TrainSec	HealCost	HealSec	HealHeavyCost	HealHeavySec
+兵种(100火 200弓 300毒 400冰)	基础满编人数(由扩编科技放大)	单兵攻击力	单兵防御力	单兵负重(每人提供多少负重上限)	训练一名的消耗(JSON)	训练一名的秒数	把一名轻伤兵治成满血的消耗(JSON)	把一名轻伤兵治成满血的秒数	把一名重伤兵治成轻伤的消耗(JSON,须逐资源高于轻伤;与轻伤两段合计须低于训练)	把一名重伤兵治成轻伤的秒数(须不低于轻伤;与轻伤两段合计须低于训练)
+100	200	120	80	1.0	[{"kind":"vm","id":11151006,"val":20},{"kind":"vm","id":11151007,"val":8}]	3	[{"kind":"vm","id":11151006,"val":3},{"kind":"vm","id":11151001,"val":5}]	1	[{"kind":"vm","id":11151006,"val":6},{"kind":"vm","id":11151001,"val":7}]	1
+200	240	115	85	1.1	[{"kind":"vm","id":11151006,"val":22},{"kind":"vm","id":11151007,"val":10}]	3	[{"kind":"vm","id":11151006,"val":4},{"kind":"vm","id":11151001,"val":6}]	1	[{"kind":"vm","id":11151006,"val":6},{"kind":"vm","id":11151001,"val":8}]	1
+300	280	110	90	1.2	[{"kind":"vm","id":11151006,"val":24},{"kind":"vm","id":11151007,"val":12}]	4	[{"kind":"vm","id":11151006,"val":4},{"kind":"vm","id":11151001,"val":7}]	1	[{"kind":"vm","id":11151006,"val":7},{"kind":"vm","id":11151001,"val":9}]	2
+400	320	105	95	1.3	[{"kind":"vm","id":11151006,"val":26},{"kind":"vm","id":11151007,"val":14}]	4	[{"kind":"vm","id":11151006,"val":5},{"kind":"vm","id":11151001,"val":7}]	1	[{"kind":"vm","id":11151006,"val":7},{"kind":"vm","id":11151001,"val":11}]	2

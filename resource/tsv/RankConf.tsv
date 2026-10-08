@@ -1,0 +1,7 @@
+id	name	mode	periods	sort
+ID	Name	Mode	Periods	Sort
+榜单ID	名称	更新模式(add/max/set)	保留周期(JSON数组,留空=仅总榜;取值 day/week/month/all,顺序即页签顺序)	排序
+1	主城等级	max	[]	1
+2	战斗胜场	add	["day","week","month","all"]	2
+3	采集总量	add	["day","week","month","all"]	3
+4	战力	set	[]	4

@@ -1,0 +1,6 @@
+id	title	description	anchor	start_ms	offset_sec	repeat_sec	preview_sec	duration_sec	claim_sec	min_castle	goal	mode
+ID	Title	Description	Anchor	StartMs	OffsetSec	RepeatSec	PreviewSec	DurationSec	ClaimSec	MinCastle	Goal	Mode
+编号	名称	说明	时间锚点	日历开始毫秒	偏移秒	重复间隔秒	预告秒	进行秒	领奖秒	主城门槛	目标	累计方式
+1	每日来访	每日进入游戏领取补给	utc	0	0	86400	0	86400	0	1	login	max
+2	采集补给	在地图采集资源，领取阶梯补给	utc	0	0	604800	0	518400	86400	1	gather	add
+3	开拓之路	开服七日内提升主城等级	server	0	0	0	0	604800	86400	1	castle_level	max

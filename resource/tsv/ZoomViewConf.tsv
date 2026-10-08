@@ -1,0 +1,8 @@
+id	kind	relation
+ID	类型	关系
+配置表id(唯一)	实体类型	与其他玩家的关系
+2	MapUnitNpcTroop	All
+3	MapUnitGatherable	All
+4	MapUnitPlayerCastle	All
+5	MapUnitPlayerTroop	All
+8	MapUnitScoutTroop	Self

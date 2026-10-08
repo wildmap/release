@@ -1,0 +1,37 @@
+# text=auto 让 git 入库时把文本统一成 LF、检出时写 LF。
+* text=auto eol=lf
+
+# 显式声明二进制，不让 git 的启发式去猜。
+*.ico   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.glb   binary
+*.gltf  binary
+
+# 上面那条误判的补救：HTML 一律按文本处理。
+*.html text
+
+# 配置表显式钉死 LF。
+#
+# 与 `* text=auto` 的效果相同，写出来是为了让它成为一条**看得见**的约定：
+# TSV 按行切分后按 \t 切列，残留的 \r 会跟着最后一列的值一起被读进去，
+# 表现是「最后一列莫名其妙匹配不上」——而 \r 在任何编辑器里都是看不见的，
+# 这种故障从现象反推到行尾几乎不可能。
+*.tsv text eol=lf
+
+# Shell 脚本必须 LF：CRLF 会让 shebang 后面多一个 \r，
+# 内核找不到解释器，报错是「bad interpreter: No such file or directory」，
+# 而路径本身看起来完全正确。
+*.sh text eol=lf
+
+# lfs 必须显式给 filter
+bin/**           filter=lfs diff=lfs merge=lfs -text
+*.glb            filter=lfs diff=lfs merge=lfs -text
+*.woff2          filter=lfs diff=lfs merge=lfs -text
