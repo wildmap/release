@@ -34,7 +34,7 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 
 | 端 | 技术栈 |
 |---|---|
-| 服务端 | Go · xhive Actor 框架 · ChanRPC · xdoc 嵌入式文档库 · koanf · cmux · coder/websocket · gopher-lua |
+| 服务端 | Go · xhive Actor 框架 · ChanRPC · xdoc 嵌入式文档库 · koanf · cmux · coder/websocket |
 | 客户端 | React 19 · TypeScript 7 · Vite 8 · three 0.184 + @react-three/fiber 9 · camera-controls · zustand 5 · Tailwind 4 · oxlint |
 
 仓库目录：
@@ -42,7 +42,7 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 | 目录 | 内容 |
 |---|---|
 | `cmd/game` | 进程入口 |
-| `internal/<模块>` | db、auth、play、rank、actv、mail、chat、wmap、gm、gate 十个模块 |
+| `internal/<模块>` | db、auth、play、rank、actv、mail、chat、wmap、gate 九个模块 |
 | `internal/proto` | 协议：`client/` 是客户端协议，`iproto/` 是模块间消息 |
 | `internal/gconf` | 配置加载与校验 |
 | `internal/infra` | 公共基础设施，例如 savemgr |
@@ -142,8 +142,6 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 
 ![雪](img/snow.jpg)
 
-![GM 强制天气：雨](img/rain_gm.jpg)
-
 <img src="img/dock.jpg" alt="小地图与天气合并卡" width="320">
 
 合并卡显示的都是**视野中心**所在格的数据：
@@ -171,7 +169,7 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 **入口**（`cmd/game/main.go`）：
 1. cobra 解析 `-c` 参数；
 2. `gconf.Load` 加载配置；
-3. `xhive.Run(db, auth, play, rank, actv, mail, chat, wmap, gm, gate)`。
+3. `xhive.Run(db, auth, play, rank, actv, mail, chat, wmap, gate)`。
 
 启动失败时，错误同时写 stderr 和 slog，因为日志可能已经配置成写文件。
 
@@ -184,7 +182,6 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 | rank、actv、mail | 3 | — |
 | chat | 4 | — |
 | wmap | 5 | — |
-| gm | 6 | — |
 | gate | `math.MaxUint` | 一开始接受连接，请求就会打进各业务模块，所以必须最后起 |
 
 **启动流程**：
@@ -192,7 +189,7 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 - 全部成功后，才为每个模块起 `Serve` goroutine，再等所有模块 Ready。
 - 所以 **OnInit 里不能做跨模块调用**。各模块的冷启动读档都挂在 0 延迟定时器上。
 
-**停机**：收到 SIGINT/SIGTERM 后，按启动的逆序逐个关：gate → gm → wmap → … → db。单个模块依次执行：cancel ctx → 等 Serve 退出 → `OnDestroy` → 释放出站 client。client 放到最后，是因为 OnDestroy 里还要给别的模块投消息。
+**停机**：收到 SIGINT/SIGTERM 后，按启动的逆序逐个关：gate → wmap → … → db。单个模块依次执行：cancel ctx → 等 Serve 退出 → `OnDestroy` → 释放出站 client。client 放到最后，是因为 OnDestroy 里还要给别的模块投消息。
 
 **停机时怎么保证落库**：
 - play、wmap、mail、chat、rank、actv 的 OnDestroy 都调一次 `saveMgr.SaveAll()`，对每个集合做**全量、同步**的 BulkSave。
@@ -260,7 +257,6 @@ WildMap 是一款大地图 SLG：地图 7.2 公里见方，服务端是单进程
 | chat | 频道、群、好友、禁言、举报 | 敏感词过滤 |
 | rank | 排行榜 | 惰性翻周期 |
 | actv | 活动排期（个人进度在 play） | 以开服时刻为锚 |
-| gm | 不持有状态 | Lua 命令转发给对应的权威模块 |
 | gate | 客户端连接 | 协议分流、会话绑定、心跳流控 |
 
 ### 3.5 两条典型链路

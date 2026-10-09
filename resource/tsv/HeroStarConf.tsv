@@ -1,0 +1,8 @@
+star	fragments	cost	power_bp	limit_bp	bonus_bp
+Star	Fragments	Cost	PowerBP	LimitBP	BonusBP
+星级	升到本星碎片	升到本星费用	累计战力增量万分比	累计带兵增量万分比	累计整队加成增量万分比
+1	0	[]	0	0	0
+2	20	[{"kind":"vm","id":11151001,"val":1000}]	2000	1000	1000
+3	40	[{"kind":"vm","id":11151001,"val":2000}]	4500	2000	2500
+4	80	[{"kind":"vm","id":11151001,"val":4000}]	7500	3500	4500
+5	160	[{"kind":"vm","id":11151001,"val":8000}]	11000	5000	7000

@@ -1,7 +1,7 @@
-id	name	level	radius_block	radius_occupy	lifetime	rand_time	speed	move_point	soldier_kind	soldier_count	soldier_atk	soldier_def	skill_ids	drop
-ID	Name	Level	RadiusBlock	RadiusOccupy	Lifetime	RandTime	Speed	MovePoint	SoldierKind	SoldierCount	SoldierATK	SoldierDEF	SkillIDs	Drop
-索引ID	名称	基础等级	碰撞半径	占地半径	存活时间(毫秒)	随机移动时间范围	速度	移动路径配置ID	兵种(100=火系 200=弓系 300=毒系 400=冰系)	基础等级兵力(每升一级增加25%)	单兵攻击力	单兵防御力	携带技能ID列表(不含普通攻击)	击杀掉落(JSON,留空则按等级从同级采集点推算)
-13330001	野怪弓箭手	1	2000	2000	18000000	[8000,18000]	2	3	200	700	100	75	[100705,101105,100805,1006]	[{"kind":"vm","id":11151007,"name":"木材","val":1152,"coef":0.8}]
-13330002	野怪火法	1	2000	2000	18000000	[10000,22000]	3	1	100	700	110	70	[1015,1010,1005]	[{"kind":"vm","id":11151001,"name":"金币","val":7200,"coef":5.0}]
-13330003	野怪冰法	1	2000	2000	18000000	[12000,25000]	2	3	400	700	90	90	[1016,100905,101205,1014]	[{"kind":"vm","id":11151008,"name":"水晶矿","val":720,"coef":0.5}]
-13330004	野怪毒法	1	2000	2000	18000000	[8000,20000]	3	4	300	700	105	65	[1015,101805,101705,1004]	[{"kind":"vm","id":11151006,"name":"粮食","val":1440,"coef":1.0}]
+id	name	level	radius_block	radius_occupy	lifetime	rand_time	speed	move_point	soldier_kind	soldier_count	soldier_atk	soldier_def	heroes	drop
+ID	Name	Level	RadiusBlock	RadiusOccupy	Lifetime	RandTime	Speed	MovePoint	SoldierKind	SoldierCount	SoldierATK	SoldierDEF	Heroes	Drop
+索引ID	名称	基础等级	碰撞半径	占地半径	存活时间(毫秒)	随机移动时间范围	速度	移动路径配置ID	兵种(100=火系 200=弓系 300=毒系 400=冰系)	基础等级兵力(每升一级增加25%)	单兵攻击力	单兵防御力	英雄快照列表(JSON,包含身份/技能/战力/带兵上限/整队加成)	击杀掉落(JSON,留空则按等级从同级采集点推算)
+13330001	野怪弓箭手	1	2000	2000	18000000	[8000,18000]	2	3	200	700	100	75	[{"id":13330001,"name":"野怪弓箭手","skills":[{"id":100705},{"id":101105},{"id":100805},{"id":1006}],"power":1400.0,"soldier_limit":700,"bonuses":{"atk_bp":300,"def_bp":300,"deal_bp":0,"take_bp":0}}]	[{"kind":"vm","id":11151007,"name":"木材","val":1152,"coef":0.8}]
+13330002	野怪火法	1	2000	2000	18000000	[10000,22000]	3	1	100	700	110	70	[{"id":13330002,"name":"野怪火法","skills":[{"id":1015},{"id":1010},{"id":1005}],"power":1540.0,"soldier_limit":700,"bonuses":{"atk_bp":300,"def_bp":300,"deal_bp":0,"take_bp":0}}]	[{"kind":"vm","id":11151001,"name":"金币","val":7200,"coef":5.0}]
+13330003	野怪冰法	1	2000	2000	18000000	[12000,25000]	2	3	400	700	90	90	[{"id":13330003,"name":"野怪冰法","skills":[{"id":1016},{"id":100905},{"id":101205},{"id":1014}],"power":1260.0,"soldier_limit":700,"bonuses":{"atk_bp":300,"def_bp":300,"deal_bp":0,"take_bp":0}}]	[{"kind":"vm","id":11151008,"name":"水晶矿","val":720,"coef":0.5}]
+13330004	野怪毒法	1	2000	2000	18000000	[8000,20000]	3	4	300	700	105	65	[{"id":13330004,"name":"野怪毒法","skills":[{"id":1015},{"id":101805},{"id":101705},{"id":1004}],"power":1470.0,"soldier_limit":700,"bonuses":{"atk_bp":300,"def_bp":300,"deal_bp":0,"take_bp":0}}]	[{"kind":"vm","id":11151006,"name":"粮食","val":1440,"coef":1.0}]

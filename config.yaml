@@ -1,0 +1,95 @@
+# WildMap 运行期配置示例
+
+# 监听地址，URI 形式。支持四种协议：
+#   tcp://0.0.0.0:8080        TCP
+#   tcp://:8080               TCP，监听全部网卡
+#   kcp://0.0.0.0:8080        基于 UDP 的可靠传输
+#   unix:///tmp/wildmap.sock  Unix Domain Socket
+#   npipe:////./pipe/wildmap  Windows 命名管道
+Listen:
+  URI: tcp://:8080
+
+# 日志级别：debug / info / warn / error，大小写不敏感，
+# 也支持 slog 的偏移写法（如 INFO+2）。
+#
+# Format 是输出格式：
+#   console  给人读：一条记录一行，字段跟在消息后面；只有含换行的值（panic 堆栈）
+#            才另起竖线块。默认值，留空即此项。不上色。
+#   json     给机器读：一条记录一个 JSON 对象，可直接喂 jq 或日志采集。
+#
+# Path 是日志文件路径，留空输出到标准输出；非空则写文件并自动轮转。
+# 路径打不开（目录缺失且建不出来、没有写权限）会在启动阶段失败——日志写不出去这件事
+# 本身也没法用日志告诉你，所以宁可起不来。目录不存在会自动创建并留一条告警。
+#
+# MaxSizeMB / MaxBackups / MaxAgeDays / RotationHours / Compression 只在 Path 非空时有意义，
+# 留空即用默认值。RotationHours 填负数表示关掉按时间轮转、只按大小轮转。
+#
+# TimeLayout 是时间格式（Go 参考时间写法），留空即 RFC3339 毫秒；它同时作用于行首时间
+# 与 time.Time 类型的字段值。Headers 指名行首自定义头读哪几个环境变量，留空即不输出；
+# 要从环境变量以外的地方取，在代码里给 xslog.WithHeader 传一个自己的函数。
+Log:
+  Level: debug
+  Format: console
+  Path: ""
+  TimeLayout: ""
+  Headers: [GAME_ID, WORLD_ID, SVR_KIND, SVR_IDX]
+  MaxSizeMB: 50
+  MaxBackups: 7
+  MaxAgeDays: 7
+  RotationHours: 24
+  Compression: none
+
+# 磁盘资源目录，其中的文件逐个覆盖内嵌资源，缺失的部分自动回落内嵌资源；
+# 目录不存在时纯用内嵌资源。便于线上只替换个别配置表/前端文件而不重新打包。
+Resource:
+  Path: resource
+
+# 数据存储连接串，数据文件路径直接写在里面。**必填**，留空即在配置阶段启动失败——
+# 本服务不支持无持久化启动。
+#   xdoc:///var/lib/wildmap/data.db   绝对路径（推荐）
+#   xdoc://data/wildmap.db            相对于进程工作目录
+#
+# 数据落在本机单个文件里，不需要外部数据库进程。所在目录不存在会被自动创建，
+# 同时留下一条告警——正常情况下那只在首次部署时出现一次。跑了很久的服务突然
+# 打出它，说明这里指向的位置变了：接下来会开出一个空库、冷启动读回零条记录、
+# 全服按新人重新分配并覆盖回库，且不可逆。看到那条告警要先确认路径对不对。
+#
+# 该文件同时只能被一个进程打开，误起第二个实例会在启动阶段失败。
+#
+# 在 WSL 下开发时注意别把数据文件放在 /mnt/ 的 Windows 盘挂载上，那里的
+# 文件系统比原生 Linux 分区慢一个数量级；需要时把路径指到 ~ 下面。
+#
+# 键名必须与 gconf.AppConf.DatabaseConf 的 yaml tag 一致。
+Database:
+  URI: "xdoc://data/wildmap.db"
+
+  # 文档加密密钥，64 个十六进制字符（32 字节，AES-256）。留空表示不加密。
+  # 生成一个：openssl rand -hex 32
+  #
+  # 加密只覆盖每条记录的内容，不覆盖主键与集合名——主键必须保持可比较才能维持
+  # 存储内部的有序性，而那是批量写入性能的前提。拿到数据文件的人能看出有哪些
+  # 集合、各有多少条、主键是什么，看不到的是记录里写了什么。
+  #
+  # 密钥不匹配会在启动阶段直接失败，不会带着错误的密钥跑起来。
+  #
+  # 填了密钥，这份配置文件本身就成了密钥文件：要设成只有服务账号可读，
+  # 不要进版本控制。（本文件位于 .test/ 下，已被 .gitignore 排除。）
+  #
+  # 在已经存有明文数据的文件上启用加密：旧记录仍然读得出来，此后写入的都是
+  # 密文，一次停机全量落地即可全部转换。但被释放的旧页不会被擦除，明文会残留
+  # 在文件的空闲区域里直到被覆写——真要防的是文件被整个拷走的话，转换完还要做
+  # 一次压缩（把活跃数据搬进新文件），否则残留仍然可读。
+  EncryptKey: "b5be2a63c1e0561c2bc28fe7a9314c2ec6746468f72c1dc61a340e561ee09e5a"
+
+# 账号认证参数。密码仅保存 Argon2id 哈希；会话令牌默认保持 30 天。
+Auth:
+  TokenTTLSec: 2592000
+  UsernameMinLength: 3
+  UsernameMaxLength: 32
+  PasswordMinLength: 8
+  PasswordMaxLength: 128
+  ArgonMemoryKiB: 65536
+  ArgonIterations: 3
+  ArgonParallelism: 2
+  AttemptWindowSec: 60
+  MaxAttempts: 5

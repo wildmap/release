@@ -1,0 +1,8 @@
+id	name	initial	power	soldier_limit	soldier_kind	bonuses	rarity	recruit_level	recruit_cost	duplicate_fragments
+ID	Name	Initial	Power	SoldierLimit	SoldierKind	Bonuses	Rarity	RecruitLevel	RecruitCost	DuplicateFragments
+编号	名称	初始授予	基础战力	带兵上限	所属兵种(100火 200弓 300毒 400冰)	整队加成	稀有度	招募主城等级	招募费用	重复专属碎片
+1	统帅	true	2400	1040	100	{"atk_bp":500,"def_bp":500,"deal_bp":0,"take_bp":0}	1	1	[{"kind":"vm","id":11151001,"val":1000},{"kind":"vm","id":11151006,"val":500}]	10
+2	先锋	false	2600	1000	200	{"atk_bp":800,"def_bp":200,"deal_bp":300,"take_bp":0}	1	1	[{"kind":"vm","id":11151001,"val":2000},{"kind":"vm","id":11151006,"val":1000}]	10
+3	坚盾	false	2200	1200	400	{"atk_bp":200,"def_bp":1000,"deal_bp":0,"take_bp":-300}	1	2	[{"kind":"vm","id":11151001,"val":2500},{"kind":"vm","id":11151006,"val":1200}]	10
+4	游击	false	3200	1000	300	{"atk_bp":1000,"def_bp":400,"deal_bp":600,"take_bp":0}	2	3	[{"kind":"vm","id":11151001,"val":6000},{"kind":"vm","id":11151006,"val":3000}]	20
+5	护卫	false	3000	1400	100	{"atk_bp":400,"def_bp":1200,"deal_bp":0,"take_bp":-600}	2	3	[{"kind":"vm","id":11151001,"val":6000},{"kind":"vm","id":11151006,"val":3000}]	20

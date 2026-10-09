@@ -36,7 +36,7 @@ ID	Category	ChapterID	Title	Description	GoalType	Mode	Target	ParamKind	ParamID	P
 11002	chapter	11	未雨绸缪	扩容 2 次队列	queue_expand	add	2		0	0	[{"kind":"vm","id":11151007,"val":3000}]	2
 11003	chapter	11	争分夺秒	加速 10 次作业	queue_boost	add	10		0	0	[{"kind":"vm","id":11151001,"val":3500}]	3
 12001	chapter	12	威震一方	战胜其他玩家 10 次	player_battle_win	add	10		0	0	[{"kind":"vm","id":11151008,"val":3000}]	1
-12002	chapter	12	以寡敌众	击败 5 级以上敌人 20 次	defeat_level	add	20		0	5	[{"kind":"vm","id":11151001,"val":5000}]	2
+12002	chapter	12	以寡敌众	击败 5 级以上野怪 20 次	defeat_level	add	20	npc	0	5	[{"kind":"vm","id":11151001,"val":5000}]	2
 12003	chapter	12	富甲一方	持有 200000 金币	asset_own	max	200000	vm	11151001	0	[{"kind":"vm","id":11151006,"val":4000}]	3
 9004	chapter	9	固本强基	主城达到 14 级	castle_level	max	14		0	0	[{"kind":"vm","id":11151007,"val":3000}]	4
 10004	chapter	10	深筑高垒	主城达到 20 级	castle_level	max	20		0	0	[{"kind":"vm","id":11151008,"val":3500}]	4
@@ -56,5 +56,5 @@ ID	Category	ChapterID	Title	Description	GoalType	Mode	Target	ParamKind	ParamID	P
 15004	chapter	15	铜墙铁壁	主城达到 39 级	castle_level	max	39		0	0	[{"kind":"vm","id":11151001,"val":11000}]	4
 16001	chapter	16	格物致知	科技总等级达到 150	tech_total	max	150		0	0	[{"kind":"vm","id":11151008,"val":6000}]	1
 16002	chapter	16	带甲百万	部队满编人数达到 3000	soldier_capacity	max	3000		0	0	[{"kind":"vm","id":11151007,"val":7000}]	2
-16003	chapter	16	以一当十	击败 10 级以上对手 30 次	defeat_level	add	30		0	10	[{"kind":"vm","id":11151006,"val":7500}]	3
+16003	chapter	16	以一当十	击败 10 级以上野怪 30 次	defeat_level	add	30	npc	0	10	[{"kind":"vm","id":11151006,"val":7500}]	3
 16004	chapter	16	王图霸业	主城达到 40 级	castle_level	max	40		0	0	[{"kind":"vm","id":11151001,"val":20000}]	4
